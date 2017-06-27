@@ -8,8 +8,14 @@
 module.exports = {
 	
 	index: function(req, res){
-		User.find().exec(function(err, users){
+		User.find({active:true}).exec(function(err, users){
 			res.render('user/index',{'users':users})
+		});
+	},
+
+	show_deleteds: function(req, res){
+		User.find({active:false}).exec(function(err, users){
+			res.render('user/showdeleteds',{'users':users})
 		});
 	},
 
@@ -74,6 +80,19 @@ module.exports = {
 
     User.findOne(id).exec(function(err, user) {
 
+    	user.active = 0;
+
+    	user.save(function(err){
+				if(err){
+					res.send("Error on removing user");
+				}else{
+					req.flash("message","Successfully removed");
+					res.redirect('user/index');
+				}
+			});
+
+
+    	/*
       user.destroy(function(err){
       	if(err){
 					res.send("Error on deleting user");
@@ -82,6 +101,8 @@ module.exports = {
 					res.redirect('user/index/');
 				}
       });
+      */
+
     });
 	}
 

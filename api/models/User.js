@@ -22,7 +22,18 @@ module.exports = {
       type: 'string',
       required: true
     },
-    
+    userlevel: {
+      type: 'string',
+      required: true,
+      enum: ['admin', 'normal'],
+      defaultsTo: 'normal'
+    },
+    active: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: 1
+    },
+
     // override default toJSON
     toJSON: function() {
       var obj = this.toObject();

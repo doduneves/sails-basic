@@ -1,18 +1,27 @@
+<div>
+	<%= req.flash('message') %>
+</div>
+
 <a href="/user/create">Create New User</a>
 <table>
 	<tr>
 		<th>Username</th>
 		<th>Email</th>
+		<th>User Level</th>
 		<th colspan="2">Actions</th>
 	</tr>
 	<% users.forEach( function( model ){ %>
 	<tr>
-		<td><a href="/user/view/<%=model.id %>""> <%= model.name %> </a></td> </td>
+		<td><a href="/user/view/<%=model.id %>""> <%= model.name %> </a></td>
 		<td><%= model.email %></td>
-		<td><a href="/user/delete/<%= model.id %>"">Delete</a> | <a href="/user/update/<%= model.id %>"">Edit</a>
+		<td><%= model.userlevel %></td>
+		<td><a href="/user/delete/<%= model.id %>"">Delete</a></td>
+		<td><a href="/user/update/<%= model.id %>"">Edit</a>
 
 	</tr>
 
 	<% }); %>
 
 </table>
+
+<a href="/user/show_deleteds">Show Deleted Users</a>
