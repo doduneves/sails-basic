@@ -1,0 +1,18 @@
+<h2>Update <%=model.name %></h2>
+<form action="/user/update/<%=model.id %>" method="POST">
+
+	<label for="name">Username</label>
+	<input type="text" name="User[name]" value="<%=model.name %>"><br/>
+
+	<label for="email">Email</label>
+	<input type="email" name="User[email]" value="<%=model.email %>"><br/>
+
+	<label for="password">Password</label>
+	<input type="password" name="User[password]" value="<%=model.password %>"><br/>
+
+	<input type="submit"/>
+
+</form>
+
+
+<a href="/user">Back</a>
