@@ -26,9 +26,9 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true,
+  '*': "authenticated",
   UserController: {
-      "create": true,
+      "signup": true,
   },
   AuthController: {
       '*': true,

@@ -23,16 +23,17 @@ module.exports = {
       req.logIn(user, function(err) {
         if(err) res.send(err);
         
-        return res.send({
-          message: 'login successful'
-        });
+        req.flash("message","Logged In");
+        res.redirect('/user');
       });
     }) (req, res);
   },
 
   logout: function(req, res) {
     req.logOut();
-    res.send('logout successful');
+
+    req.flash("message","User Logged Out");
+    res.redirect('/login');
   }
 };
 

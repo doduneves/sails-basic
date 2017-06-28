@@ -104,6 +104,24 @@ module.exports = {
       */
 
     });
+	},
+
+	// Igual a create, mas para fazer diferentes permissões
+	signup: function(req, res){
+		if(req.method == 'POST' && req.param("User", null)!= null){
+			User.create(req.param("User")).exec(function(err,model){
+				if(err){
+					sails.log(err);
+					res.send("Some error in creating new user.");
+				}else{
+					req.flash("message","Signed up succesful. Use your credentials to access the system.");
+					res.redirect('login/');
+
+				}
+			})
+		}else{
+			res.render('signup');
+		}
 	}
 
 };
