@@ -14,7 +14,7 @@ module.exports = {
   },
   process: function(req, res) {
     passport.authenticate('local', function(err, user, info) {
-      if( (err)||(!user) ) {
+      if( (err) || (!user) || !user.active ) {
         req.flash("message","Fail to Login");
         res.redirect('/login');
         return false;
