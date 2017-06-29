@@ -1,18 +1,30 @@
+<%- partial('top') %> 
+
 <h2>Update <%=model.name %></h2>
 <form action="/user/update/<%=model.id %>" method="POST">
 
+	
+  <div class="form-group">
 	<label for="name">Username</label>
-	<input type="text" name="User[name]" value="<%=model.name %>"><br/>
-
+	<input class="form-control" type="text" name="User[name]" value="<%=model.name %>">
+	</div>
+  
+  <div class="form-group">
 	<label for="email">Email</label>
-	<input type="email" name="User[email]" value="<%=model.email %>"><br/>
+	<input class="form-control" type="email" name="User[email]" value="<%=model.email %>">
+	</div>
 
+  <div class="form-group">
 	<label for="password">Password</label>
-	<input type="password" name="User[password]" value="<%=model.password %>"><br/>
+	<input class="form-control" type="password" name="User[password]" value="<%=model.password %>"><br/>
+	</div>
 
-	<input type="submit"/>
-
+  <div class="form-group">
+	<input type="submit"  class="btn btn-primary"/>
+	</div>
 </form>
 
 
 <a href="/user">Back</a>
+
+<%- partial('bottom') %> 

@@ -1,11 +1,15 @@
+<%- partial('top') %> 
+
 <h2><%=model.name%></h2>
-<ul>
-	<li>Name: <%= model.name %></li>
-	<li>Email: <%= model.email %></li>
-	<li>User Level: <%= model.userlevel %></li>
-	<li>Active: <%= model.active %></li>
-	<li>Created At: <%= model.createdAt %></li>
-	<li>Updated At: <%= model.updatedAt %></li>
+<ul class="list-group">
+	<li class="list-group-item">Name: <%= model.name %></li>
+	<li class="list-group-item">Email: <%= model.email %></li>
+	<li class="list-group-item">User Level: <%= model.userlevel %></li>
+	<li class="list-group-item">Active: <%= model.active %></li>
+	<li class="list-group-item">Created At: <%= model.createdAt %></li>
+	<li class="list-group-item">Updated At: <%= model.updatedAt %></li>
 </ul>
 
 <a href="/user">Back</a>
+
+<%- partial('bottom') %> 

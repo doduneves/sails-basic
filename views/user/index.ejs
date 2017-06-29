@@ -1,15 +1,17 @@
-<div>
-  <%= req.flash('message') %>
-</div>
+<%- partial('top') %> 
 
 <a href="/user/create">Create New User</a>
-<table>
+<table class="table table-hover">
+	<thead class="thead-inverse">
 	<tr>
 		<th>Username</th>
 		<th>Email</th>
 		<th>User Level</th>
 		<th colspan="2">Actions</th>
 	</tr>
+	</thead>
+
+	<tbody>
 	<% users.forEach( function( model ){ %>
 	<tr>
 		<td><a href="/user/view/<%=model.id %>""> <%= model.name %> </a></td>
@@ -21,7 +23,9 @@
 	</tr>
 
 	<% }); %>
-
+	</tbody>
 </table>
 
 <a href="/user/show_deleteds">Show Deleted Users</a>
+
+<%- partial('bottom') %> 

@@ -1,17 +1,22 @@
+<h2>Login</h2>
 <form action="/login" method="post">
-    <div>
+    <div class="form-group">
         <label>Email:</label>
-        <input type="email" name="email"/>
+        <input class="form-control form-control-sm" type="email" name="email"/>
     </div>
-    <div>
+
+    <div class="form-group">
         <label>Password:</label>
-        <input type="password" name="password"/>
+        <input class="form-control form-control-sm" type="password" name="password"/>
     </div>
-    <div>
-        <input type="submit" value="Log In"/>
+    
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="Log In"/>
     </div>
+    
 </form>
 
+<hr>
 <div>
     <h4>New User?</h4>
     <a href="/signup">Sign Up</a>
