@@ -25,9 +25,13 @@
 
     <div class="mt-5">
     
-      <div>
-        <%= req.flash('message') %>
+      
+      <% var msg = req.flash('message') %>
+      <% if(msg != ''){ %>
+      <div class="alert alert-info">
+        <%= msg %>
       </div>
+      <% } %>
 
       <div class="container">
         <div class="jumbotron">
