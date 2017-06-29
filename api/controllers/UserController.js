@@ -125,6 +125,7 @@ module.exports = {
 					sails.log(err);
 					res.send("Some error in creating new user.");
 				}else{
+					Mailer.sendWelcomeMail(model);
 					req.flash("message","Signed up succesful. Use your credentials to access the system.");
 					res.redirect('login/');
 
