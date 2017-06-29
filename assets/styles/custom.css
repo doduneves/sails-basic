@@ -1,3 +1,17 @@
 .mt-5{
 	margin-top: 60px;
 }
+
+ul.nav li a, ul.nav li a {
+    color: #FF4C4C !important;
+}
+
+footer{
+	color: #555;
+	font-size: 11px;
+}
+
+
+footer a{
+	color: #FF4C4C !important;
+}
