@@ -133,17 +133,26 @@ module.exports = {
 		if(req.method == 'POST' && req.param("User", null)!= null){
 
 			if(req.param("User")['confirm-password'] == req.param("User")['password']){
-				User.create(req.param("User")).exec(function(err,model){
-					if(err){
-						sails.log(err);
-						res.send("Some error in creating new user.");
-					}else{
-						Mailer.sendWelcomeMail(model);
-						req.flash("message","Signed up succesful. Use your credentials to access the system.");
-						res.redirect('login/');
 
+				User.count().exec(function(err, found){
+					if(found == 0){
+						req.param("User")['userlevel'] = 'admin';
 					}
-				})
+					
+
+					User.create(req.param("User")).exec(function(err,model){
+						if(err){
+							res.send("Some error in creating new user.");
+						}else{
+							Mailer.sendWelcomeMail(model);
+							req.flash("message","Signed up succesful. Use your credentials to access the system.");
+							res.redirect('login/');
+
+						}
+					})
+				});
+
+
 			}else{
 					req.flash("message","Wrong confirmed password");
 					res.redirect('signup');				
