@@ -16,10 +16,20 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top ">
-      <div class="container">
-        <a class="navbar-brand" href="/">Sails Basics</a>
+  <div class="container">
+    <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse">
+      <a class="navbar-brand" href="#">Navbar</a>
+      
+      <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+        <span class="navbar-text">
+          Welcome, <%= req.session.passport.user.name %>
+        </span>
+        <ul class="nav navbar-nav">
+          <li><a href="user/alter_info">Change Personal Info</a></li>
+          <li><a href="logout">Logout</a></li>
+        </ul>
       </div>
+    </nav>
     </div>
 
 

@@ -3,7 +3,13 @@ LocalStrategy = require('passport-local').Strategy,
 bcrypt = require('bcrypt');
  
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    loggedUser = {
+        name: user.name,
+        email: user.email,
+        active: user.active,
+        userlevel: user.userlevel
+    }
+    done(null, loggedUser);
 });
 
 passport.deserializeUser(function(id, done) {
