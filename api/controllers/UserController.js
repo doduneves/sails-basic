@@ -8,13 +8,24 @@
 module.exports = {
 	
 	index: function(req, res){
-		User.find({active:true}).exec(function(err, users){
+		var query = ""
+		if(req.method == 'GET' && req.query["search"]){
+			query = req.query["search"];
+		}
+
+		User.find({active:true, name: {'like': '%'+query+'%'}}).exec(function(err, users){
 			res.render('user/index',{'users':users})
 		});
 	},
 
 	show_deleteds: function(req, res){
-		User.find({active:false}).exec(function(err, users){
+
+		var query = ""
+		if(req.method == 'GET' && req.query["search"]){
+			query = req.query["search"];
+		}
+
+		User.find({active:false, name: {'like': '%'+query+'%'}}).exec(function(err, users){
 			res.render('user/showdeleteds',{'users':users})
 		});
 	},

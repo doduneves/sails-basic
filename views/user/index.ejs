@@ -1,6 +1,18 @@
 <%- partial('top') %> 
 
-<a href="/user/create">Create New User</a>
+<a href="/user/create" class="col-xs-6">Create New User</a>
+
+<form class="col-xs-6 form-inline pull-right" action="/user/index" method="GET">
+	<div class="form-group">
+	<label for="search">Search for Username</label>
+	<input  class="form-control" type="text" name="search">
+	</div>
+
+  <div class="form-group">
+	<input type="submit" class="btn btn-primary" value="search"/>
+	</div>
+</form>
+
 <table class="table table-hover">
 	<thead class="thead-inverse">
 	<tr>
