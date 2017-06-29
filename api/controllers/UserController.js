@@ -40,15 +40,21 @@ module.exports = {
 
 	create: function(req, res){
 		if(req.method == 'POST' && req.param("User", null)!= null){
-			User.create(req.param("User")).exec(function(err,model){
-				if(err){
-					res.send("Some error in creating new user.");
-				}else{
-					req.flash("message","Successfully created");
-					res.redirect('user/');
 
-				}
-			})
+			if(req.param("User")['confirm-password'] == req.param("User")['password']){
+				User.create(req.param("User")).exec(function(err,model){
+					if(err){
+						res.send("Some error in creating new user.");
+					}else{
+						req.flash("message","Successfully created");
+						res.redirect('user/');
+
+					}
+				})
+			}else{
+					req.flash("message","Wrong confirmed password");
+					res.redirect('user/create');				
+			}
 		}else{
 			res.render('user/create');
 		}
@@ -120,17 +126,23 @@ module.exports = {
 	// Igual a create, mas para fazer diferentes permissões
 	signup: function(req, res){
 		if(req.method == 'POST' && req.param("User", null)!= null){
-			User.create(req.param("User")).exec(function(err,model){
-				if(err){
-					sails.log(err);
-					res.send("Some error in creating new user.");
-				}else{
-					Mailer.sendWelcomeMail(model);
-					req.flash("message","Signed up succesful. Use your credentials to access the system.");
-					res.redirect('login/');
 
-				}
-			})
+			if(req.param("User")['confirm-password'] == req.param("User")['password']){
+				User.create(req.param("User")).exec(function(err,model){
+					if(err){
+						sails.log(err);
+						res.send("Some error in creating new user.");
+					}else{
+						Mailer.sendWelcomeMail(model);
+						req.flash("message","Signed up succesful. Use your credentials to access the system.");
+						res.redirect('login/');
+
+					}
+				})
+			}else{
+					req.flash("message","Wrong confirmed password");
+					res.redirect('signup');				
+			}
 		}else{
 			res.render('signup');
 		}
