@@ -76,7 +76,6 @@ module.exports = {
 
 					model.name = u.name;
 					model.email = u.email;
-					model.password = u.password;
 
 					model.save(function(err){
 						if(err){
@@ -93,6 +92,31 @@ module.exports = {
 			});
 		}
 
+	},
+
+	change_info: function(req, res){
+		var id = req.session.passport.user.id;
+
+		User.findOne(id).exec(function(err,model){
+			if(req.method == 'POST' && req.param("User", null)!= null){
+				var u = req.param("User", null);
+
+				model.name = u.name;
+				model.email = u.email;
+
+				model.save(function(err){
+					if(err){
+						req.flash("message","Error on updating User");
+						res.redirect('user/create');
+					}else{
+						req.flash("message","Successfully updated");
+						res.redirect('user/view/'+model.id);
+					}
+				});
+			}else{
+				res.render('user/update', {'model':model})
+			}
+		});
 	},
 
 	delete: function(req, res){

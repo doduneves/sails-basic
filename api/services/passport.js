@@ -4,6 +4,7 @@ bcrypt = require('bcrypt');
  
 passport.serializeUser(function(user, done) {
     loggedUser = {
+        id: user.id,
         name: user.name,
         email: user.email,
         active: user.active,
