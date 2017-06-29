@@ -15,8 +15,8 @@ module.exports = {
     },
     email: {
 	    type: 'email',
-	    required: true
-      //unique: true
+	    required: true,
+      //isUniqueActive: true
     },
     password: {
       type: 'string',
@@ -41,6 +41,18 @@ module.exports = {
       return obj;
     }
 	},
+
+  types: {
+  // Validação de ser único usuário ativo com o email
+    isUniqueActive: function(value){
+      User.findOne({active:true, email: value}).exec(function(err, record) {
+        if(!record){
+          return true;
+        }
+        return false;
+      });
+    }
+  },
 
 	beforeCreate: function(user, cb) {
     bcrypt.genSalt(10, function(err, salt) {

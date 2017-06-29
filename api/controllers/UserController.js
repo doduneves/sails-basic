@@ -44,7 +44,9 @@ module.exports = {
 			if(req.param("User")['confirm-password'] == req.param("User")['password']){
 				User.create(req.param("User")).exec(function(err,model){
 					if(err){
-						res.send("Some error in creating new user.");
+						req.flash("message","Error on creating User");
+						sails.log(err);
+						res.redirect('user/create');
 					}else{
 						req.flash("message","Successfully created");
 						res.redirect('user/');
@@ -78,7 +80,8 @@ module.exports = {
 
 					model.save(function(err){
 						if(err){
-							res.send("Error on update user");
+							req.flash("message","Error on updating User");
+							res.redirect('user/create');
 						}else{
 							req.flash("message","Successfully updated");
 							res.redirect('user/view/'+model.id);
@@ -101,7 +104,9 @@ module.exports = {
 
     	user.save(function(err){
 				if(err){
-					res.send("Error on removing user");
+					sails.log(err);
+					req.flash("message","Error on removing user");
+					res.redirect('user/index');
 				}else{
 					req.flash("message","Successfully removed");
 					res.redirect('user/index');
