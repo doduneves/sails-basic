@@ -18,6 +18,10 @@ module.exports = {
 		});
 	},
 
+	home: function(req, res){
+			res.render('user/home');
+	},
+
 	show_deleteds: function(req, res){
 
 		var query = ""

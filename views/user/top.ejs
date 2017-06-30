@@ -17,16 +17,21 @@
   <body>
 
     <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse">
-      <a class="navbar-brand" href="#">Navbar</a>
-      
-      <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
-        <span class="navbar-text">
-          Welcome, <b><%= req.session.passport.user.name %></b>
-        </span>
-        <ul class="nav navbar-nav">
-          <li><a href="user/change_info">Change Personal Info</a></li>
-          <li><a href="../logout">Logout</a></li>
-        </ul>
+      <div class="container">
+        <a class="navbar-brand" href="../user/home">Sails Basics</a>
+        
+        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+          <span class="navbar-text">
+            Welcome, <b><%= req.session.passport.user.name %></b>
+          </span>
+          <ul class="nav navbar-nav">
+            <% if(req.session.passport.user.userlevel == 'admin'){ %>
+              <li><a href="../user">Manage Users</a></li>
+            <% } %>
+            <li><a href="../user/change_info">Change Personal Info</a></li>
+            <li><a href="../logout">Logout</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
 

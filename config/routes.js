@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     controller: 'UserController',
-    action: 'index'
+    action: 'home'
   },
 
   'GET /login': {

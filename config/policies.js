@@ -26,9 +26,11 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': "authenticated",
+  '*': true,
   UserController: {
-      "signup": true,
+      "*": "isAdmin",
+      "change_info": "authenticated",
+      "home": "authenticated",
   },
   AuthController: {
       '*': true,

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+    <title><%=typeof title == 'undefined' ? 'Sails Basic' : title%></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -16,11 +16,11 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top ">
+    <nav class="navbar navbar-fixed-top navbar-inverse bg-inverse">
       <div class="container">
         <a class="navbar-brand" href="/">Sails Basics</a>
       </div>
-    </div>
+    </nav>
 
 
     <div class="mt-5">
@@ -42,9 +42,9 @@
 
     <div class="container">
     <hr>
-      <footer class="footer">
+      <footer class="footer" >
         <div class="pull-right">
-          <div>sails test developed by Eduardo Neves</div>
+          <div>sails test developed by <a href="https://github.com/doduneves">Eduardo Neves</a></div>
         </div>
       </footer>
     </div>

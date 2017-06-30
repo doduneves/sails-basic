@@ -23,7 +23,7 @@ module.exports = {
         if(err) res.send(err);
         
         req.flash("message","Logged In");
-        res.redirect('/user');
+        res.redirect('/user/home');
       });
     }) (req, res);
   },
